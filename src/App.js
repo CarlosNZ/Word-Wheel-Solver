@@ -1,23 +1,43 @@
-import React from "react";
-import logo from "./logo.svg";
+import React, { Component } from "react";
 import "./App.css";
-// import * from "./wordlist.js"
-import { wordList } from "./wordlist.js";
+import * as ww from "./wordwheel";
+
+export default App;
 
 function App() {
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a className="App-link" href="https://reactjs.org" target="_blank" rel="noopener noreferrer">
-          Learn react and {wordList[10]}
-        </a>
-      </header>
+      <Wheel />
     </div>
   );
 }
 
-export default App;
+function LetterBox(props) {
+  return <input className="letterbox" type="text" value={props.value} />;
+}
+
+class Wheel extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      letters: "NAUSEATE",
+      letterArray: []
+    };
+    this.state.letterArray = this.state.letters.split("");
+  }
+  render() {
+    return (
+      <div id="wheel">
+        {this.state.letterArray.map((ltr) => (
+          <LetterBox value={ltr} />
+        ))}
+      </div>
+    );
+  }
+}
+
+class Results extends Component {
+  render() {
+    return <div></div>;
+  }
+}

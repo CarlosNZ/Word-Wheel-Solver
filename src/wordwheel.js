@@ -1,3 +1,5 @@
+import { wordList } from "./wordlist.js";
+
 export function wordwheel(letters) {
   if (!validate(letters)) return false;
   const letterArray = buildArray(letters);
@@ -6,10 +8,11 @@ export function wordwheel(letters) {
     letterArray.forEach((exp) => {
       const re = new RegExp(exp, "g");
       if (re.test(word)) {
-        console.log(word);
+        matches.push(word);
       }
     });
   });
+  return matches;
 }
 
 export function validate(letters) {
