@@ -1,4 +1,4 @@
-function wordwheel(letters) {
+export function wordwheel(letters) {
   if (!validate(letters)) return false;
   const letterArray = buildArray(letters);
   let matches = [];
@@ -12,12 +12,12 @@ function wordwheel(letters) {
   });
 }
 
-function validate(letters) {
+export function validate(letters) {
   const re = /^(?=[A-z?]{8}$)[A-z]*\?[A-z]*$/;
   return re.test(letters);
 }
 
-function buildArray(letters) {
+export function buildArray(letters) {
   let charString = letters.toLowerCase().replace("?", ".");
   let letterArray = [charString];
   for (let i = 1; i < 8; i++) {
