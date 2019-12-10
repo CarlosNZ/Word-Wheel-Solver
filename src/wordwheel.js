@@ -12,7 +12,7 @@ export function wordwheel(letters) {
       }
     });
   });
-  return matches;
+  return matches.length === 0 ? false : matches;
 }
 
 export function validate(letters) {

@@ -1,1 +1,1 @@
-export const thisVar = "a few words about nothing";
+import * as ww from "./wordwheel";
