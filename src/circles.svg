@@ -1,0 +1,23 @@
+<svg xmlns="http://www.w3.org/2000/svg" 
+  xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 1000 1000">
+  <g id="cirles">
+    <circle id="outer-circle" cx="500" cy="500" r="492" stroke-width="16" fill="none" stroke="black" />
+    <circle id="inner-circle" cx="500" cy="500" r="100" stroke-width="16" fill="none" stroke="black" />
+  </g>
+  <g id="lines">
+    <line id="vert-top" x1="500" y1="0" x2="500" y2="400" stroke-width="16" fill="none" stroke="black"/>
+    <!-- <use xlink:href="#pillar" x="76" />
+    <use xlink:href="#pillar" x="152" />
+    <use xlink:href="#pillar" x="228" />
+    <use xlink:href="#pillar" x="304" /> -->
+  </g>
+  <!-- <g id="horiz-bars">
+    <rect id="bar" x="287" y="370" width="427" height="32" rx="16" fill="black"/>
+    <use xlink:href="#bar" y="219" />
+  </g>
+  <rect id="base" x="260" y="638" width="482" height="44" rx="22" fill="black" />
+  <g id="roof">
+    <use xlink:href="#base" y="-328" />
+    <polygon points="271 313 494 200 506 200 731 313" fill="black" />
+  </g> -->
+</svg>
