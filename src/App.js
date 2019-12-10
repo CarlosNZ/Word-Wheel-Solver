@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import "./App.css";
+import "./App.scss";
 import * as ww from "./wordwheel";
 // import Async from "react-async";
 
@@ -16,7 +16,14 @@ function App() {
 function LetterBox(props) {
   return (
     <div>
-      <input name={props.name} className="letterbox" type="text" value={props.value} onChange={props.onChange} />
+      <input
+        id={props.id}
+        name={props.name}
+        className="letterbox"
+        type="text"
+        value={props.value}
+        onChange={props.onChange}
+      />
     </div>
   );
 }
@@ -54,7 +61,8 @@ class Wheel extends Component {
             {this.state.letterArray.map((letter, index) => (
               <LetterBox
                 value={letter}
-                name={"letter" + index}
+                id={"letter_" + index}
+                name={"letter_" + index}
                 key={index}
                 onChange={this.handleInputChange.bind(this, index)}
               />
@@ -75,7 +83,7 @@ function Results(props) {
   const result = ww.wordwheel(props.text);
   const displayResult = result ? result.toString().toUpperCase() : "";
   return (
-    <div>
+    <div id="results">
       <p>{displayResult}</p>
     </div>
   );
