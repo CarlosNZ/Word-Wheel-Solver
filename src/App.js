@@ -64,7 +64,7 @@ class Wheel extends Component {
   }
 
   handleClick() {
-    this.setState({ letterArray: new Array(8).fill("") });
+    this.setState({ letterArray: new Array(8).fill(""), letters: "" });
     document.getElementById("input-boxes")[6].focus();
   }
 
