@@ -1,20 +1,27 @@
 $circle-scale: 2.5;
-$box_width: 30;
+$box_width: 40;
+$distance: 105;
+$offset: 40%;
 
 .App {
   text-align: center;
 }
 
 html {
-  background-color: white;
+  background-color: rgb(255, 255, 255);
+}
+
+#container {
 }
 
 #wheel {
   position: relative;
-  background-image: url("mockup.png");
+  margin: auto;
+  background-image: url("circles.svg");
   background-size: cover;
   width: 300px;
   height: 300px;
+  // border: 1px solid black;
 }
 
 input {
@@ -23,40 +30,17 @@ input {
   height: #{$box_width}px;
   border: none;
   text-align: center;
-  font-size: 100%;
+  font-size: 270%;
+  font-weight: bold;
   margin: 5px;
   position: absolute;
-  top:50%; left: 50%;
+  background-color: rgba(255, 255, 255, 0);
+  top: #{$offset};
+  left: #{$offset};
 }
 
-#letter_0 {
-  transform: translate(12em);
-}
-
-#letter_1 {
-  transform: rotate(45deg) translate(12em) rotate(-45deg);
-}
-
-#letter_2 {
-  transform: rotate(90deg) translate(12em) rotate(-90deg);
-}
-
-#letter_3 {
-  transform: rotate(135deg) translate(12em) rotate(-135deg);
-}
-
-#letter_4 {
-  transform: translate(-12em);
-}
-
-#letter_5 {
-  transform: rotate(225deg) translate(12em) rotate(-225deg);
-}
-
-#letter_6 {
-  transform: rotate(270deg) translate(12em) rotate(-270deg);
-}
-
-#letter_7 {
-  transform: rotate(315deg) translate(12em) rotate(-315deg);
+@for $i from 0 through 7 {
+  #letter_#{$i} {
+    transform: rotate(#{$i * 45 + 22.5}deg) translate(#{$distance}px) rotate(-#{$i * 45 + 22.5}deg);
+  }
 }

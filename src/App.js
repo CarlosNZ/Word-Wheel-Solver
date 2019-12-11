@@ -15,16 +15,14 @@ function App() {
 
 function LetterBox(props) {
   return (
-    <div>
-      <input
-        id={props.id}
-        name={props.name}
-        className="letterbox"
-        type="text"
-        value={props.value}
-        onChange={props.onChange}
-      />
-    </div>
+    <input
+      id={props.id}
+      name={props.name}
+      className="letterbox"
+      type="text"
+      value={props.value}
+      onChange={props.onChange}
+    />
   );
 }
 
@@ -55,7 +53,7 @@ class Wheel extends Component {
 
   render() {
     return (
-      <div>
+      <div id="container">
         <div id="wheel">
           <form id="input-boxes">
             {this.state.letterArray.map((letter, index) => (
