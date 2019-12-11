@@ -44,3 +44,14 @@ input {
     transform: rotate(#{$i * 45 + 22.5}deg) translate(#{$distance}px) rotate(-#{$i * 45 + 22.5}deg);
   }
 }
+
+// #results {
+// width: 200px;
+//   margin: auto;
+// }
+
+#results p {
+  font-size: 200%;
+  font-weight: bold;
+  letter-spacing: 0.2em;
+}

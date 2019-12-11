@@ -1,7 +1,6 @@
 import React, { Component } from "react";
 import "./App.scss";
 import * as ww from "./wordwheel";
-// import Async from "react-async";
 
 export default App;
 
@@ -22,6 +21,7 @@ function LetterBox(props) {
       type="text"
       value={props.value}
       onChange={props.onChange}
+      onKeyDown={props.onKeyDown}
     />
   );
 }
@@ -40,7 +40,7 @@ class Wheel extends Component {
   handleInputChange(index, event) {
     //Update array with uppercase letter
     const newLetterArray = this.state.letterArray;
-    const validInput = /^[A-z\?]$/.test(event.target.value);
+    const validInput = /^[A-z?]$/.test(event.target.value);
     if (validInput) {
       newLetterArray[index] = event.target.value.toUpperCase();
       this.setState({ letterArray: newLetterArray, letters: newLetterArray.join("") });
@@ -49,6 +49,27 @@ class Wheel extends Component {
       event.target.form.elements[nextIndex].focus();
       event.target.form.elements[nextIndex].select();
     }
+  }
+
+  onKeyDown(index, event) {
+    if (event.keyCode === 8) {
+      //Shift focus to prev input box
+      const prevIndex = index === 0 ? 7 : index - 1;
+      event.target.form.elements[prevIndex].focus();
+      event.target.form.elements[prevIndex].select();
+      const newLetterArray = this.state.letterArray;
+      newLetterArray[prevIndex] = "";
+      this.setState({ letterArray: newLetterArray, letters: newLetterArray.join("") });
+    }
+  }
+
+  handleClick() {
+    this.setState({ letterArray: new Array(8).fill("") });
+    document.getElementById("input-boxes")[6].focus();
+  }
+
+  componentDidMount() {
+    document.getElementById("input-boxes")[6].focus();
   }
 
   render() {
@@ -62,12 +83,14 @@ class Wheel extends Component {
                 id={"letter_" + index}
                 name={"letter_" + index}
                 key={index}
+                onKeyDown={this.onKeyDown.bind(this, index)}
                 onChange={this.handleInputChange.bind(this, index)}
               />
             ))}
           </form>
         </div>
         <Results text={this.state.letters} />
+        <button onClick={this.handleClick.bind(this)}>Reset</button>
       </div>
     );
   }
