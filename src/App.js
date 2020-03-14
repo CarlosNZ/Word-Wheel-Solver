@@ -97,12 +97,11 @@ class Wheel extends Component {
 }
 
 function Results(props) {
-  // const solved = new Promise(function(resolve, reject) {
-  //   if (ww.wordwheel(props.text)) resolve(["This", "Worked"]);
-  //   else reject(Error(["Did", "Not", "Work"]));
-  // });
   const result = ww.wordwheel(props.text);
   const displayResult = result ? result.toString().toUpperCase() : "";
+  if (displayResult !== "") {
+    alert(displayResult);
+  }
   return (
     <div id="results">
       <p>{displayResult}</p>
