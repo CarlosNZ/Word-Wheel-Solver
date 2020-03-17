@@ -11,9 +11,6 @@ html {
   background-color: rgb(255, 255, 255);
 }
 
-#container {
-}
-
 h1 {
   text-align: center;
 }
@@ -57,13 +54,29 @@ input {
 
 button {
   color: white;
-  background-color: #007bff;
-  border-color: #007bff;
-  border: 1px solid;
+  background-color: #616e7c;
+  border-color: #616e7c;
+  border: 0px solid;
   font-size: 100%;
   // font-weight: bold;
-  padding: 0.375rem 0.75rem;
+  padding: 0.475rem 0.85rem;
   border-radius: 0.25rem;
-  transition: color 0.15s ease-in-out, background-color 0.15s ease-in-out, border-color 0.15s ease-in-out,
-    box-shadow 0.15s ease-in-out;
+  transition: color 0.15s ease-in-out, background-color 0.15s ease-in-out, border-color 0.15s ease-in-out;
+}
+
+button:hover {
+  background-color: #616e7ce5;
+  border-color: #616e7ce5;
+  cursor: pointer;
+}
+
+footer {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+}
+
+footer p {
+  text-align: center;
+  font-size: 80%;
 }

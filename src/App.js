@@ -99,9 +99,6 @@ class Wheel extends Component {
 function Results(props) {
   const result = ww.wordwheel(props.text);
   const displayResult = result ? result.toString().toUpperCase() : "";
-  if (displayResult !== "") {
-    alert(displayResult);
-  }
   return (
     <div id="results">
       <p>{displayResult}</p>
