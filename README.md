@@ -4,6 +4,6 @@ A simple solver for the daily **Word Wheel** puzzle, as featured in the [NZ Hera
 
 Example:
 
-<img src="[url](https://raw.githubusercontent.com/CarlosNZ/Word-Wheel-Solver/master/resources/example.jpg?token=ABJUFFMFJAZ2TK4DYJJUIXS6OCRWW)" alt="alt text" width="whatever" height="whatever">
+![](https://raw.githubusercontent.com/CarlosNZ/Word-Wheel-Solver/master/resources/example_small.jpg?token=ABJUFFJAGPMYJZZFR3W7JBS6OCTLA)
 
 See installation at: [https://wordwheel-solver.web.app/](https://wordwheel-solver.web.app/)
