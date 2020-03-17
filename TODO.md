@@ -1,5 +1,8 @@
 - Launch modal for solution
+- Version number in footer (automatic from package)
 - Return "No Solution" if no solution, "Invalid" if invalid input
+- Github link colour
+- Modal only on mobile
 - Box focusing style on mobile
 - Box character cutoff on Safari
 - Box placement consistency on mobile (try abs positioning from corner)
