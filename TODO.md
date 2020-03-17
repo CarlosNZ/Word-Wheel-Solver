@@ -1,4 +1,5 @@
-- Style title
+- Launch modal for solution
+- Return "No Solution" if no solution, "Invalid" if invalid input
 - Box focusing style on mobile
 - Box character cutoff on Safari
 - Box placement consistency on mobile (try abs positioning from corner)

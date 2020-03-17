@@ -30,21 +30,27 @@ class Wheel extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      letters: "",
-      letterArray: new Array(8).fill("")
+      letterArray: new Array(8).fill(""),
+      solution: ""
     };
-    // this.handleInputChange = this.handleInputChange.bind(this, index);
-    this.state.letters = this.state.letterArray.join("");
   }
 
   handleInputChange(index, event) {
-    //Update array with uppercase letter
+    // Update array with uppercase letter
     const newLetterArray = this.state.letterArray;
     const validInput = /^[A-z?]$/.test(event.target.value);
     if (validInput) {
       newLetterArray[index] = event.target.value.toUpperCase();
-      this.setState({ letterArray: newLetterArray, letters: newLetterArray.join("") });
-      //Shift focus to next input box
+      this.setState({ letterArray: newLetterArray });
+      // Try and solve
+      const displayResult = solve(this.state.letterArray.join(""));
+      if (displayResult) {
+        alert(displayResult);
+        this.setState({ solution: displayResult });
+        return;
+      }
+      this.setState({ solution: "" });
+      // Shift focus to next input box
       const nextIndex = index === this.state.letterArray.length - 1 ? 0 : index + 1;
       event.target.form.elements[nextIndex].focus();
       event.target.form.elements[nextIndex].select();
@@ -66,6 +72,7 @@ class Wheel extends Component {
   handleClick() {
     this.setState({ letterArray: new Array(8).fill(""), letters: "" });
     document.getElementById("input-boxes")[6].focus();
+    this.setState({ solution: "" });
   }
 
   componentDidMount() {
@@ -89,19 +96,14 @@ class Wheel extends Component {
             ))}
           </form>
         </div>
-        <Results text={this.state.letters} />
+        <p className="results">{this.state.solution}</p>
         <button onClick={this.handleClick.bind(this)}>Reset</button>
       </div>
     );
   }
 }
 
-function Results(props) {
-  const result = ww.wordwheel(props.text);
-  const displayResult = result ? result.toString().toUpperCase() : "";
-  return (
-    <div id="results">
-      <p>{displayResult}</p>
-    </div>
-  );
+function solve(text) {
+  const result = ww.wordwheel(text);
+  return result ? result.toString().toUpperCase() : "";
 }
