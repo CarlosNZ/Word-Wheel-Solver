@@ -52,20 +52,27 @@ class Wheel extends Component {
       }
       this.setState({ solution: "" });
       // Shift focus to next input box
-      const nextIndex = index === this.state.letterArray.length - 1 ? 0 : index + 1;
+      const nextIndex = (index + 1) % 8;
       event.target.form.elements[nextIndex].focus();
       event.target.form.elements[nextIndex].select();
     }
   }
 
   onKeyDown(index, event) {
+    const newLetterArray = this.state.letterArray;
+    // Backspace key pressed
     if (event.keyCode === 8) {
-      //Shift focus to prev input box
-      const prevIndex = index === 0 ? 7 : index - 1;
-      event.target.form.elements[prevIndex].focus();
-      event.target.form.elements[prevIndex].select();
-      const newLetterArray = this.state.letterArray;
-      newLetterArray[prevIndex] = "";
+      // Delete letter but don't shift focus
+      if (this.state.letterArray[index] !== "") {
+        newLetterArray[index] = "";
+      } else {
+        // Shift focus to prev input box
+        const prevIndex = index === 0 ? 7 : index - 1;
+        event.target.form.elements[prevIndex].focus();
+        event.target.form.elements[prevIndex].select();
+        // const newLetterArray = this.state.letterArray;
+        newLetterArray[prevIndex] = "";
+      }
       this.setState({ letterArray: newLetterArray, letters: newLetterArray.join("") });
     }
   }
@@ -82,10 +89,6 @@ class Wheel extends Component {
 
   onCloseModal = () => {
     this.setState({ modalOpen: false });
-  };
-
-  modalStyle = {
-    modal: { backgroundColor: "black" }
   };
 
   render() {
@@ -105,7 +108,9 @@ class Wheel extends Component {
             ))}
           </form>
         </div>
-        <p className="results">{this.state.solution}</p>
+        <p className={this.state.solution !== "" ? "results" : ""}>
+          {this.state.solution !== "" ? this.state.solution : 'Enter letters, including "?"'}
+        </p>
         <button onClick={this.handleClick.bind(this)}>Reset</button>
         <Modal
           open={this.state.modalOpen}
