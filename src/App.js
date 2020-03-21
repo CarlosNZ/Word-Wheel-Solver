@@ -109,7 +109,7 @@ class Wheel extends Component {
           </form>
         </div>
         <p className={this.state.solution !== "" ? "results" : ""}>
-          {this.state.solution !== "" ? this.state.solution : 'Enter letters, including "?"'}
+          {this.state.solution !== "" ? this.state.solution : 'Enter letters, including "?" for missing letter.'}
         </p>
         <button onClick={this.handleClick.bind(this)}>Reset</button>
         <Modal
