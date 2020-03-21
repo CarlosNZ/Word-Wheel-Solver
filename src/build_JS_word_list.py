@@ -1,4 +1,4 @@
-#Script used to build the list of 8-letter words
+# Script used to build the list of 8-letter words
 
 sowpods = open("sowpods.txt", "r")
 output = open("wordlist.js", "w")
