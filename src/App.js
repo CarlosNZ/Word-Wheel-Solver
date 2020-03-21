@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import "./App.scss";
 import * as ww from "./wordwheel";
+import Modal from "react-responsive-modal";
 
 export default App;
 
@@ -31,7 +32,8 @@ class Wheel extends Component {
     super(props);
     this.state = {
       letterArray: new Array(8).fill(""),
-      solution: ""
+      solution: "",
+      modalOpen: false
     };
   }
 
@@ -45,8 +47,7 @@ class Wheel extends Component {
       // Try and solve
       const displayResult = solve(this.state.letterArray.join(""));
       if (displayResult) {
-        alert(displayResult);
-        this.setState({ solution: displayResult });
+        this.setState({ solution: displayResult, modalOpen: true });
         return;
       }
       this.setState({ solution: "" });
@@ -79,6 +80,14 @@ class Wheel extends Component {
     document.getElementById("input-boxes")[6].focus();
   }
 
+  onCloseModal = () => {
+    this.setState({ modalOpen: false });
+  };
+
+  modalStyle = {
+    modal: { backgroundColor: "black" }
+  };
+
   render() {
     return (
       <div id="container">
@@ -98,6 +107,16 @@ class Wheel extends Component {
         </div>
         <p className="results">{this.state.solution}</p>
         <button onClick={this.handleClick.bind(this)}>Reset</button>
+        <Modal
+          open={this.state.modalOpen}
+          onClose={this.onCloseModal}
+          center
+          closeIconSize={16}
+          animationDuration={200}
+          classNames={{ modal: "modal-style" }}
+        >
+          <h2>{this.state.solution}</h2>
+        </Modal>
       </div>
     );
   }
