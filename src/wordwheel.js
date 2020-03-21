@@ -1,4 +1,5 @@
 import { wordList } from "./wordlist.js";
+import { wordListGen } from "./wordlistGenerator.js";
 
 export function wordwheel(letters) {
   if (!validate(letters)) return false;
@@ -34,4 +35,10 @@ export function buildArray(letters) {
     );
   }
   return letterArray;
+}
+
+export function createPuzzle() {
+  const word = wordListGen[Math.floor(Math.random() * wordListGen.length)].split();
+  word[Math.floor(Math.random() * 8)] = "?";
+  // TO-DO: Rotate array and return
 }
