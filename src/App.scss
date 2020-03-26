@@ -9,10 +9,15 @@ $offset: 40%;
 
 html {
   background-color: rgb(255, 255, 255);
+  min-height: 100vh;
 }
 
 h1 {
   text-align: center;
+}
+
+a {
+  color: darkorange;
 }
 
 #wheel {
@@ -79,4 +84,9 @@ footer {
 footer p {
   text-align: center;
   font-size: 80%;
+}
+
+.modal-style {
+  border-radius: 7px;
+  border: 2px solid darkorange;
 }
