@@ -16,7 +16,7 @@ export function wordwheel(letters) {
 }
 
 export function validate(letters) {
-  const re = /^(?=[A-z?]{8}$)[A-z]*\?[A-z]*$/;
+  const re = /^(?=[A-Za-z?]{8}$)[A-Za-z]*\?[A-Za-z]*$/;
   return re.test(letters);
 }
 

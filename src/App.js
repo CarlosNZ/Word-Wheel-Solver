@@ -38,14 +38,13 @@ class Wheel extends Component {
   handleInputChange(index, event) {
     // Update array with uppercase letter
     const newLetterArray = this.state.letterArray;
-    const validInput = /^[A-z?]$/.test(event.target.value);
+    const validInput = /^[A-Za-z?]$/.test(event.target.value);
     if (validInput) {
       newLetterArray[index] = event.target.value.toUpperCase();
       this.setState({ letterArray: newLetterArray });
       // Try and solve
       const displayResult = solve(this.state.letterArray.join(""));
       if (displayResult) {
-        alert(displayResult);
         this.setState({ solution: displayResult });
         return;
       }
@@ -58,6 +57,7 @@ class Wheel extends Component {
   }
 
   onKeyDown(index, event) {
+    // Backspace pressed
     if (event.keyCode === 8) {
       //Shift focus to prev input box
       const prevIndex = index === 0 ? 7 : index - 1;
