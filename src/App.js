@@ -33,7 +33,7 @@ class Wheel extends Component {
     this.state = {
       letterArray: new Array(8).fill(""),
       solution: "",
-      modalOpen: false
+      modalOpen: false,
     };
   }
 
